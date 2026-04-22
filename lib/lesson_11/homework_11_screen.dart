@@ -55,7 +55,7 @@ class Homework11Screen extends StatelessWidget {
 
 class InteractiveCard extends StatefulWidget {
   const InteractiveCard({
-    required this.width,    
+    required this.width,
     required this.normalColor,
     required this.pressedColor,
     required this.alignment,
@@ -127,7 +127,7 @@ class _InteractiveCardState extends State<InteractiveCard> {
                 Icon(
                   isSelected ? Icons.star : Icons.star_border,
                   color: const Color(0xFFFFFD71),
-                )
+                ),
               ],
             ),
           ),
