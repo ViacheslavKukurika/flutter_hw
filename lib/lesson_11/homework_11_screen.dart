@@ -29,15 +29,16 @@ class Homework11Screen extends StatelessWidget {
                   alignment: Alignment.topLeft,
                 ),
               ),
-              const SizedBox(height: 8),
-              const InteractiveCard(
-                width: 300,
-                height: 150,
-                normalColor: Color(0xFF08E900),
-                pressedColor: Color(0xFF05A800),
-                alignment: Alignment.center,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: const InteractiveCard(
+                  width: 300,
+                  height: 150,
+                  normalColor: Color(0xFF08E900),
+                  pressedColor: Color(0xFF05A800),
+                  alignment: Alignment.center,
+                ),
               ),
-              const SizedBox(height: 8),
               const InteractiveCard(
                 width: 300,
                 height: 150,
@@ -76,7 +77,7 @@ class InteractiveCard extends StatefulWidget {
 class _InteractiveCardState extends State<InteractiveCard> {
   bool isSelected = false;
 
-  void toggleCard() {
+  void _toggleCard() {
     setState(() {
       isSelected = !isSelected;
     });
@@ -85,7 +86,7 @@ class _InteractiveCardState extends State<InteractiveCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: toggleCard,
+      onTap: _toggleCard,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: widget.width,
@@ -101,7 +102,7 @@ class _InteractiveCardState extends State<InteractiveCard> {
                     offset: Offset(0, 4),
                   ),
                 ]
-              : [],
+              : null,
         ),
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -114,16 +115,17 @@ class _InteractiveCardState extends State<InteractiveCard> {
                   isSelected ? Icons.star : Icons.star_border,
                   color: const Color(0xFFFFFD71),
                 ),
-                const SizedBox(width: 10),
-                const Text(
-                  'Привіт, Flutter!',
-                  style: TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: const Text(
+                    'Привіт, Flutter!',
+                    style: TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                const SizedBox(width: 10),
                 Icon(
                   isSelected ? Icons.star : Icons.star_border,
                   color: const Color(0xFFFFFD71),
