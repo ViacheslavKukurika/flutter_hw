@@ -52,17 +52,18 @@ class _Homework12ScreenState extends State<Homework12Screen> {
               child: Column(
                 children: [
                   _buildHeader(),
-                  const SizedBox(height: 32),
-                  const Text(
-                    'Яку оціночку поставите відділам?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF13131E), // true
+                  Padding(
+                    padding: const EdgeInsets.all(32),
+                    child: const Text(
+                      'Яку оціночку поставите відділам?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF13131E), // true
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 16),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: ReviewDepartmentCard(
@@ -164,7 +165,7 @@ class _Homework12ScreenState extends State<Homework12Screen> {
   }
 
   /* Те, що нижче, я б виніс в окремі папки, якби це був би реальний проект,
-  але для зручності перевірки (мабуть, я так думаю, буде легше) залишу все 
+  але для зручності перевірки (я так думаю, буде легше) залишу все 
   тут, в одному файлі.
   */
 
@@ -204,7 +205,7 @@ class RatingStars extends StatelessWidget {
   });
 
   final int rating;
-  final ValueChanged<int> onRatingChanged;
+  final void Function(int rating) onRatingChanged;
 
   static const String _starEmptyPath = 'assets/icons/lesson_12/star_empty.png';
 
@@ -218,7 +219,6 @@ class RatingStars extends StatelessWidget {
       children: List.generate(5, (index) {
         final starNumber = index + 1;
         final isFilled = starNumber <= rating;
-
         return GestureDetector(
           onTap: () {
             onRatingChanged(starNumber);
@@ -242,19 +242,32 @@ class RatingStars extends StatelessWidget {
   }
 }
 
-/* class RatingStars - це клас, який відповідає за фіксування (GestureDetector)
-та відмальовування зірочок. Він відрізняється від 2-х інших карток, тому далі
-буде створений ще один окремий кастомний віджет для малювання карток "Випічка"
-та "Лавка традицій". 
+/* ---------------------- class RatingStars ----------------------
 
-final starNumber = index + 1 - для того, щоб перша зірочка = 1, а не 0;
+  class RatingStars - це клас, який відповідає за фіксування натиснення
+(GestureDetector)та відмальовування зірочок. Він відрізняється від 2-х інших
+карток, тому далі буде створений ще один окремий кастомний віджет для малювання
+карток "Випічка" та "Лавка традицій" (class ReviewDepartmentCard), а також ще 2
+кастомні віджети (класи): ReviewOptionRow та ReviewTextField.
+
+Основа цього класу - Row, точніше, його діти, які будуть розташовані в ряд.
+Метод List.generate(5, (index) - створює по черзі кожну із 5-ти зірочок. Зірочка
+створюється завдяки "return GestureDetector" (викликається 5 разів), який реагує
+на натискання.
+
+final starNumber = index + 1 - щоб перша зірочка відповідала 1, а не 0;
+
 final isFilled = starNumber <= rating - логіка вибору стану зірки (заповнювання
 зірочок): якщо натиснуто на 4-ту позицію (зірочку), то будуть зафарбовані
 зірочки, які відповідаться умові : <= 4.
 
 padding: EdgeInsets.only(
 right: index == 4 ? 0 : 8 - створення відступу лише між зірочками, тобто ми
-вказуємо, що не треба робити відступу від крайньої 5-ї зірки до правого краю */
+вказуємо, що не треба робити відступу від крайньої 5-ї зірки до правого краю
+
+Transform.scale - довелося методом підбору змінювати масштабування, щоб порожня
+зірка мала схожі розміри до заповненої (закачував 3х PNG-файл з Figma, які + до
+того мали цілком ідентичні розміри).*/
 
 class ReviewDepartmentCard extends StatelessWidget {
   const ReviewDepartmentCard({
@@ -269,8 +282,8 @@ class ReviewDepartmentCard extends StatelessWidget {
   final String title;
   final VoteType? serviceVote;
   final VoteType? assortmentVote;
-  final ValueChanged<VoteType> onServiceVoteChanged;
-  final ValueChanged<VoteType> onAssortmentVoteChanged;
+  final void Function(VoteType vote) onServiceVoteChanged;
+  final void Function(VoteType vote) onAssortmentVoteChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -307,12 +320,30 @@ class ReviewDepartmentCard extends StatelessWidget {
           const SizedBox(height: 16),
           const ReviewTextField(
             hintText: 'Розкажіть докладніше',
+            fillColor: Color(0xFFFFFFFF),
           ),
         ],
       ),
     );
   }
 }
+
+/* ---------------------- class ReviewDepartmentCard ----------------------
+
+  class ReviewDepartmentCard - кастомний віджет, який використовується для
+відмальовування карток "Випічка" та "Лавка традицій" (шаблон картки відділу).
+Таким чином ми зменшуємо к-ть рядків коду у місці, де ми прописуємо сам UI.
+Клас приймає:
+
+1) назву картки;
+2) 2 стани (serviceVote + assortmentVote);
+3) 2 колбеки, які повідомляють головну statefulWidget про зміну стану (вибору):
+onServiceVoteChanged та onAssortmentVoteChanged.
+Цей клас також наслідує statelessWidget, тож він не має власного стану, він сам 
+не зберігає дані, а отримує готові дані (результат натискання). Стан живе 
+всередині класу _Homework12ScreenState, у його полях.
+
+*/
 
 class ReviewOptionRow extends StatelessWidget {
   const ReviewOptionRow({
@@ -324,7 +355,7 @@ class ReviewOptionRow extends StatelessWidget {
 
   final String title;
   final VoteType? selectedVote;
-  final ValueChanged<VoteType> onVoteChanged;
+  final void Function (VoteType vote) onVoteChanged;
 
   static const String _likeEmptyPath = 'assets/icons/lesson_12/like_empty.png';
 
@@ -387,13 +418,21 @@ class ReviewOptionRow extends StatelessWidget {
   }
 }
 
+/* ---------------------- class ReviewOptionRow ----------------------
+  class ReviewOptionRow - кастомний віджет, який відповідає за створення рядків,
+які є структурними одиницями (якщо так можна сказати) інших віджетів. Не має
+власного стану.
+*/
+
 class ReviewTextField extends StatelessWidget {
   const ReviewTextField({
     required this.hintText,
+    this.fillColor = const Color(0xFFEEF2FC),
     super.key,
   });
 
   final String hintText;
+  final Color fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -402,7 +441,7 @@ class ReviewTextField extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           filled: true,
-          fillColor: const Color(0xFFF6F8FD),
+          fillColor: fillColor,
           hintText: hintText,
           hintStyle: const TextStyle(
             fontSize: 16,
@@ -424,3 +463,9 @@ class ReviewTextField extends StatelessWidget {
     );
   }
 }
+
+/* ---------------------- class TextField ----------------------
+  class TextField - це кастомний віджет, який відповідає за поле введення
+тексту. Він використовується в картках. Універсальний віджет для поля введення.
+Не має власного стану. 
+*/
