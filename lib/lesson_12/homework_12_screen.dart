@@ -23,6 +23,28 @@ class _Homework12ScreenState extends State<Homework12Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFEEF2FC), //true
+      appBar: AppBar(
+        backgroundColor: Color(0xFFFFFFFF),
+        titleSpacing: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            size: 22,
+            color: Color(0xFF5E5F61),
+          ),
+        ),
+        title: const Text(
+          'Оцінка візиту до магазину',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF202124),
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -149,65 +171,25 @@ class _Homework12ScreenState extends State<Homework12Screen> {
   Widget _buildHeader() {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(
+        top: 16,
+        bottom: 16,
+      ),
       decoration: const BoxDecoration(
         color: Color(0xFFFFFFFF), // true
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(24), // true
         ),
       ),
-      child: SafeArea(
-        bottom: false,
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: _handleBackTap,
-                    child: const Icon(
-                      Icons.arrow_back_ios_new,
-                      size: 22,
-                      color: Color(0xFF5E5F61), // true
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  const Expanded(
-                    child: Text(
-                      'Оцінка візиту до магазину',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF202124), // true
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 32),
-            RatingStars(
-              rating: _visitRating,
-              onRatingChanged: (rating) {
-                setState(() {
-                  _visitRating = rating;
-                });
-              },
-            ),
-          ],
-        ),
+      child: RatingStars(
+        rating: _visitRating,
+        onRatingChanged: (rating) {
+          setState(() {
+            _visitRating = rating;
+          });
+        },
       ),
     );
-  }
-
-  void _handleBackTap() {
-    final navigator = Navigator.of(context);
-
-    if (navigator.canPop()) {
-      navigator.pop();
-    }
   }
 }
 
