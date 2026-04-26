@@ -245,10 +245,13 @@ class RatingStars extends StatelessWidget {
             padding: EdgeInsets.only(
               right: index == 4 ? 0 : 8,
             ),
-            child: Image.asset(
-              isFilled ? _starFilledPath : _starEmptyPath,
-              width: 48,
-              height: 48,
+            child: Transform.scale(
+              scale: isFilled ? 1.25 : 1,
+              child: Image.asset(
+                isFilled ? _starFilledPath : _starEmptyPath,
+                width: 48,
+                height: 48,
+              ),
             ),
           ),
         );
