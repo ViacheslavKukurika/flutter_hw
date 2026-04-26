@@ -22,7 +22,7 @@ class _Homework12ScreenState extends State<Homework12Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEEF2FC), //true
+      backgroundColor: const Color(0xFFEEF2FC),
       appBar: AppBar(
         backgroundColor: Color(0xFFFFFFFF),
         titleSpacing: 0,
@@ -60,7 +60,7 @@ class _Homework12ScreenState extends State<Homework12Screen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF13131E), // true
+                        color: Color(0xFF13131E),
                       ),
                     ),
                   ),
@@ -177,9 +177,9 @@ class _Homework12ScreenState extends State<Homework12Screen> {
         bottom: 16,
       ),
       decoration: const BoxDecoration(
-        color: Color(0xFFFFFFFF), // true
+        color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(24), // true
+          bottom: Radius.circular(24),
         ),
       ),
       child: RatingStars(
