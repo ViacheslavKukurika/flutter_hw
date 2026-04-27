@@ -355,7 +355,7 @@ class ReviewOptionRow extends StatelessWidget {
 
   final String title;
   final VoteType? selectedVote;
-  final void Function (VoteType vote) onVoteChanged;
+  final void Function(VoteType vote) onVoteChanged;
 
   static const String _likeEmptyPath = 'assets/icons/lesson_12/like_empty.png';
 
@@ -464,7 +464,7 @@ class ReviewTextField extends StatelessWidget {
   }
 }
 
-/* ---------------------- class TextField ----------------------
+/* ---------------------- class ReviewTextField ----------------------
   class TextField - це кастомний віджет, який відповідає за поле введення
 тексту. Він використовується в картках. Універсальний віджет для поля введення.
 Не має власного стану. 
