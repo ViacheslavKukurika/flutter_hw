@@ -77,10 +77,13 @@ class TrainingExample1 extends StatelessWidget {
       height: 300,
       width: 300,
       color: Colors.green,
-      child: Container(
-        width: 150,
-        height: 150,
-        color: Colors.red,
+      child: Align(
+        alignment: Alignment.topRight,
+        child: Container(
+          width: 150,
+          height: 150,
+          color: Colors.red,
+        ),
       ),
     );
   }
