@@ -143,7 +143,7 @@ class TrainingExample3 extends StatelessWidget {
   }
 
   /*---------------------------------------------------------------------
-   Віджет Center вирівнює свого child по центру (стосується 2-х осей), а
+    Віджет Center вирівнює свого child по центру (стосується 2-х осей), а
    віджет Align дає більше можливостей: ми можемо самі визначити положення
    child-у, використовуючи координати, які самі ж задаємо. Тобто можна ска-
    зати, що Center - це обмежений Align (Align, в якого заданий єдиний конкре-
@@ -192,20 +192,44 @@ class TrainingExample4 extends StatelessWidget {
 
 class TrainingExample5 extends StatelessWidget {
   const TrainingExample5({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return Center(
       child: Container(
-        color: Colors.blue,
+        padding: const EdgeInsets.all(16),
+        color: Colors.red,
         child: Container(
-          color: Colors.yellow,
-          height: 100,
-          width: 100,
+          padding: const EdgeInsets.all(16),
+          color: Colors.blue,
+          child: Container(
+            color: Colors.yellow,
+            height: 100,
+            width: 100,
+          ),
         ),
       ),
     );
   }
+
+  /*---------------------------------------------------------------------
+    Навіть трішки незвично, що ми не спочатку задаємо розмір контейнера, а вже
+  потім UI будується, вираховуючи з точки початку, а навпаки: ми створюємо
+  вкладення: контейнер + ще 2, де фактичний розмір є в останнього й до нього
+  вже додається розмір падінгів й так вираховується розмір тих, що по ідеї
+  перші повинні створитися. 
+    Стосовно розмірів(підемо в зворотному порядку): 
+    - Жовтий контейнер: 100 х 100;
+    - Блакитний контейнер: 132 х 132 (16 з кожного боку = 16 * 4 в цілому, тобт
+  на 1 сторону приходиться 2 по 16);
+    - Червоний контейнер: 164 х 164.
+
+    Для цієї таски добре підходить саме pading, а не margin. pading - це внутрі-
+    шній відступ, який нам і треба. margin - зовнішній (margin не зробить
+     кольорову рамку). Є ще окремий віджет Padding. Мабуть, його можна вико-
+     ристати, але зручніше використати не як окремий віджет, а як властивість
+     віджета Container.*/
+
 }
 
 // Task 6:
@@ -214,6 +238,7 @@ class TrainingExample5 extends StatelessWidget {
 // бо не задано явних розмірів.
 // Завдання: виправте, задавши розмір контейнеру та вирівнявши текст.
 // Звертаю увагу, що сам текст теж має бути вирівняний по центру.
+
 class TrainingExample6 extends StatelessWidget {
   const TrainingExample6({super.key});
   @override
