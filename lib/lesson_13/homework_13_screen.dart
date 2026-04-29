@@ -99,19 +99,22 @@ class TrainingExample2 extends StatelessWidget {
   const TrainingExample2({super.key});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 100,
-          height: 200,
-          color: Colors.green,
-        ),
-        Container(
-          width: double.infinity,
-          height: 200,
-          color: Colors.blue,
-        ),
-      ],
+    return SizedBox(
+      height: 200,
+      child: Row(
+        children: [
+          Container(
+            width: 100,
+            height: 200,
+            color: Colors.green,
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -430,7 +433,7 @@ class TrainingExample16 extends StatelessWidget {
 }
 
 // Task 17: ConstrainedBox
-// Очікуваний результат: кнопка шириною мінімум 250 і по центру екрану 
+// Очікуваний результат: кнопка шириною мінімум 250 і по центру екрану
 // (і по ширині і по висоті)
 // При встановленні ширини кнопки в 1000px - кнопка розтягується на всю
 // допустиму ширину і не має бути помилки
