@@ -71,6 +71,7 @@ class _WidgetConstrainsTrainingScreenState
 // Зараз: червоний квадрат займає все доступне місце і перекриває зелений
 class TrainingExample1 extends StatelessWidget {
   const TrainingExample1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -97,6 +98,7 @@ class TrainingExample1 extends StatelessWidget {
 // місце по ширині
 class TrainingExample2 extends StatelessWidget {
   const TrainingExample2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -128,6 +130,7 @@ class TrainingExample2 extends StatelessWidget {
 
 class TrainingExample3 extends StatelessWidget {
   const TrainingExample3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -138,7 +141,7 @@ class TrainingExample3 extends StatelessWidget {
       ),
     );
   }
-  
+
   /*---------------------------------------------------------------------
    Віджет Center вирівнює свого child по центру (стосується 2-х осей), а
    віджет Align дає більше можливостей: ми можемо самі визначити положення
@@ -160,15 +163,18 @@ class TrainingExample3 extends StatelessWidget {
 
 class TrainingExample4 extends StatelessWidget {
   const TrainingExample4({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-
+    return Center(
       child: Container(
-        color: Colors.orange,
         height: 200,
         width: 200,
+        color: Colors.green,
+        padding: EdgeInsets.all(10),
+        child: Container(
+          color: Colors.orange,
+        ),
       ),
     );
   }
