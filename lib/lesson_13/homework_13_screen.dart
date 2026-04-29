@@ -229,7 +229,6 @@ class TrainingExample5 extends StatelessWidget {
      кольорову рамку). Є ще окремий віджет Padding. Мабуть, його можна вико-
      ристати, але зручніше використати не як окремий віджет, а як властивість
      віджета Container.*/
-
 }
 
 // Task 6:
@@ -241,13 +240,19 @@ class TrainingExample5 extends StatelessWidget {
 
 class TrainingExample6 extends StatelessWidget {
   const TrainingExample6({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        height: 200,
+        width: 200,
         color: Colors.orange,
-        child: const Text(
-          'Lorem ipsum dolor sit amet, consectetur',
+        child: const Center(
+          child: Text(            
+            'Lorem ipsum dolor sit amet, consectetur',
+            textAlign: TextAlign.center,            
+          ),
         ),
       ),
     );
