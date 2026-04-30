@@ -442,6 +442,7 @@ class TrainingExample12 extends StatelessWidget {
 
 class TrainingExample13 extends StatelessWidget {
   const TrainingExample13({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -449,9 +450,11 @@ class TrainingExample13 extends StatelessWidget {
         width: 200,
         height: 50,
         color: Colors.amber,
-        child: const Text(
-          'Дуже довгий текст який не поміщається',
-          style: TextStyle(fontSize: 30),
+        child: FittedBox(
+          child: const Text(
+            'Дуже довгий текст який не поміщається',
+            style: TextStyle(fontSize: 30),
+          ),
         ),
       ),
     );
