@@ -249,9 +249,9 @@ class TrainingExample6 extends StatelessWidget {
         width: 200,
         color: Colors.orange,
         child: const Center(
-          child: Text(            
+          child: Text(
             'Lorem ipsum dolor sit amet, consectetur',
-            textAlign: TextAlign.center,            
+            textAlign: TextAlign.center,
           ),
         ),
       ),
@@ -296,18 +296,9 @@ class TrainingExample8 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          flex: 1,
-          child: Container(color: Colors.red)
-          ),
-        Expanded(
-          flex: 2,
-          child: Container(color: Colors.green)
-          ),
-        Expanded(
-          flex: 1,
-          child: Container(color: Colors.blue)
-          ),
+        Expanded(flex: 1, child: Container(color: Colors.red)),
+        Expanded(flex: 2, child: Container(color: Colors.green)),
+        Expanded(flex: 1, child: Container(color: Colors.blue)),
       ],
     );
   }
@@ -317,14 +308,18 @@ class TrainingExample8 extends StatelessWidget {
 // Очікуваний результат: червоний контейнер висотою 100,
 // зелений контейнер займає решту простору.
 // Зараз: червоний та зелений контейнери мають однакові розміри.
+
 class TrainingExample9 extends StatelessWidget {
   const TrainingExample9({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: Container(color: Colors.red, height: 100)),
-        Expanded(child: Container(color: Colors.green)),
+        Container(color: Colors.red, height: 100),
+        Expanded(
+          child: Container(color: Colors.green),
+        ),
       ],
     );
   }
