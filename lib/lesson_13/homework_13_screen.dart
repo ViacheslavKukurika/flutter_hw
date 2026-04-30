@@ -332,18 +332,20 @@ class TrainingExample9 extends StatelessWidget {
 
 class TrainingExample10 extends StatelessWidget {
   const TrainingExample10({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        children: [
-          Container(color: Colors.orange, height: 100, width: 100),
-          ListView.builder(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(color: Colors.orange, height: 100, width: 100),
+        Expanded(
+          child: ListView.builder(
             itemCount: 20,
             itemBuilder: (context, index) => Text('Item $index'),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
