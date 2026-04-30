@@ -291,13 +291,23 @@ class TrainingExample7 extends StatelessWidget {
 // Зараз: всі три однакового розміру (flex: 1 за замовчуванням).
 class TrainingExample8 extends StatelessWidget {
   const TrainingExample8({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: Container(color: Colors.red)),
-        Expanded(child: Container(color: Colors.green)),
-        Expanded(child: Container(color: Colors.blue)),
+        Expanded(
+          flex: 1,
+          child: Container(color: Colors.red)
+          ),
+        Expanded(
+          flex: 2,
+          child: Container(color: Colors.green)
+          ),
+        Expanded(
+          flex: 1,
+          child: Container(color: Colors.blue)
+          ),
       ],
     );
   }
