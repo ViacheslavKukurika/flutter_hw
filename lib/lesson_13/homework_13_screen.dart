@@ -396,21 +396,41 @@ class TrainingExample11 extends StatelessWidget {
 
 class TrainingExample12 extends StatelessWidget {
   const TrainingExample12({super.key});
+
   @override
   Widget build(BuildContext context) {
     const redContainerWidth = 100.0;
 
-    return Row(
-      children: [
-        Container(
-          color: Colors.red,
-          height: 100,
-          width: redContainerWidth,
-          child: const Text('Hi'),
-        ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final availableWidth = constraints.maxWidth;
 
-        Expanded(child: Container(color: Colors.green, height: 100)),
-      ],
+        final actualRedWidth = redContainerWidth >= availableWidth
+            ? availableWidth
+            : redContainerWidth;
+
+        final shouldShowGreen = actualRedWidth < availableWidth;
+
+        return SizedBox(
+          height: 100,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                color: Colors.red,
+                width: actualRedWidth,
+                child: Center(child: const Text('Hi')),
+              ),
+              if (shouldShowGreen)
+                Expanded(
+                  child: Container(
+                    color: Colors.green,
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
