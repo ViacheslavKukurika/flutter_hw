@@ -356,14 +356,25 @@ class TrainingExample10 extends StatelessWidget {
 
 class TrainingExample11 extends StatelessWidget {
   const TrainingExample11({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Row(
         children: [
-          Expanded(child: Container(color: Colors.red, width: 80, height: 100)),
-          Expanded(child: Container(color: Colors.green, height: 100)),
-          Expanded(child: Container(color: Colors.blue, height: 100)),
+          Container(
+            color: Colors.red,
+            width: 80,
+            height: 100,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(color: Colors.green, height: 100),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(color: Colors.blue, height: 100),
+          ),
         ],
       ),
     );
