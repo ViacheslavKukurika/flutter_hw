@@ -471,6 +471,7 @@ class TrainingExample13 extends StatelessWidget {
 
 class TrainingExample14 extends StatelessWidget {
   const TrainingExample14({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -479,6 +480,7 @@ class TrainingExample14 extends StatelessWidget {
         height: 100,
         color: Colors.lightBlue.shade100,
         child: const FittedBox(
+          fit: BoxFit.scaleDown,
           child: Text('Flutter', style: TextStyle(fontSize: 30)),
         ),
       ),
