@@ -551,6 +551,7 @@ class TrainingExample16 extends StatelessWidget {
 
 class TrainingExample17 extends StatelessWidget {
   const TrainingExample17({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -574,8 +575,35 @@ class TrainingExample17 extends StatelessWidget {
 // Спробуйте спочатку використати UnconstrainedBox - потім
 // OverflowBox. Також використайте їх різні параметри.
 
+// Варіант 1 (UnconstrainedBox):
+
+// class TrainingExample18 extends StatelessWidget {
+//   const TrainingExample18({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Container(
+//         color: Colors.blue,
+//         width: 200,
+//         height: 200,
+//         child: UnconstrainedBox(
+//           child: Container(
+//             color: Colors.red,
+//             width: 50,
+//             height: 50,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// Варіант 2 (OverflowBox):
+
 class TrainingExample18 extends StatelessWidget {
   const TrainingExample18({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -583,7 +611,18 @@ class TrainingExample18 extends StatelessWidget {
         color: Colors.blue,
         width: 200,
         height: 200,
-        child: Container(color: Colors.red, width: 50, height: 50),
+        child: OverflowBox(
+          alignment: Alignment.center,
+          minHeight: 0,
+          maxHeight: double.infinity,
+          minWidth: 0,
+          maxWidth: double.infinity,
+          child: Container(
+            color: Colors.red,
+            width: 50,
+            height: 50,
+          ),
+        ),
       ),
     );
   }
