@@ -553,21 +553,17 @@ class TrainingExample17 extends StatelessWidget {
   const TrainingExample17({super.key});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 250),
-            child: SizedBox(
-              width: 1000,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Press me'),
-              ),
-            ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minWidth: 250),
+        child: SizedBox(
+          width: 1000,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: const Text('Press me'),
           ),
         ),
-      ],
+      ),
     );
   }
 }
