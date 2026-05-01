@@ -650,7 +650,7 @@ class TrainingExample19 extends StatelessWidget {
           maxWidth: 300,
           minHeight: 0,
           maxHeight: 100,
-          child: Container(            
+          child: Container(
             color: Colors.green,
             width: 300,
             height: 100,
@@ -666,15 +666,37 @@ class TrainingExample19 extends StatelessWidget {
 // накладається на червоний, але не накладається на синій (він знаходиться під
 // синім контейнером). Відповідь запишіть в коментарі до коду нижче.
 
-/// Відповідь: ...
+/* Відповідь: у коді спостерігається закономірність, відповідно до того, як чи-
+тається/працює код. Діти Column-а малюються послідовно:
+
+1) Спочатку відмальовується червоний контейнер;
+2) Потім відмальовується зелений контейнер, який виходить за межі свого батькі-
+всього SizedBox. Відповідно зелений контейнер накладається нахльостом на черво-
+ний контейнер, тим самим закриваючи нижню частину червоного контейнеру, а також,
+виходить, накладається і на синій, але йдемо по порядку;
+3) Потім відмальовується останній, блакитний, контейнер, який нахльостом закри-
+ває нижню частину попереднього, зеленого контейнеру. 
+
+Це мені нагадало miro, де нам показували, як працює навігатор (стек). Тобто
+суть відповіді криється у почерговості відмальовування (створення) елементів,
+де діє правило: кожен наступний елемент (якщо вони взагалі пересікаються)
+трішки перекриває попередній. В нашому випадку елементи пересікаються, бо
+проміжний елемент (другий контейнер) межує з обома й виходить за свої межі
+завдяки OverflowBox. 
+*/
 
 class TrainingExample20 extends StatelessWidget {
   const TrainingExample20({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(color: Colors.red, height: 100, width: double.infinity),
+        Container(
+          color: Colors.red,
+          height: 100,
+          width: double.infinity,
+        ),
         SizedBox(
           height: 100,
           child: OverflowBox(
@@ -687,7 +709,11 @@ class TrainingExample20 extends StatelessWidget {
             ),
           ),
         ),
-        Container(color: Colors.blue, height: 100, width: double.infinity),
+        Container(
+          color: Colors.blue,
+          height: 100,
+          width: double.infinity,
+        ),
       ],
     );
   }
