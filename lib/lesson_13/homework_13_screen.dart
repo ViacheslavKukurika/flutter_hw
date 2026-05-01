@@ -517,11 +517,17 @@ class TrainingExample15 extends StatelessWidget {
 
 // Task 16: ConstrainedBox
 // Тут просто розберіться - чому не застосовуються constraints ConstrainedBox?
-
 // Запишіть відповідь у коментарі до коду нижче
-// Відповідь: ConstrainedBox не застосовуються, тому що ...
+
+/* Відповідь: ConstrainedBox не збільшує розмір контейнеру до 300 х 300 через
+те, що він отримав жорстке обмеження від батьківського віджету SizedBox:
+100 x 100. ConstrainedBox не може зробити child більшим, ніж дозволяє батько.
+В результаті побажання ConstrainedBox (minWidth: 300 та minHeight: 300) обмежу-
+ються розмірами батька - SizedBox. Результат: розмір лишається 100 х 100. */
+
 class TrainingExample16 extends StatelessWidget {
   const TrainingExample16({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
