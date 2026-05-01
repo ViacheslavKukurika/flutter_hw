@@ -636,6 +636,7 @@ class TrainingExample18 extends StatelessWidget {
 
 class TrainingExample19 extends StatelessWidget {
   const TrainingExample19({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -643,8 +644,17 @@ class TrainingExample19 extends StatelessWidget {
         color: Colors.blue,
         width: 200,
         height: 200,
-        child: UnconstrainedBox(
-          child: Container(color: Colors.green, width: 300, height: 100),
+        child: OverflowBox(
+          alignment: Alignment.center,
+          minWidth: 0,
+          maxWidth: 300,
+          minHeight: 0,
+          maxHeight: 100,
+          child: Container(            
+            color: Colors.green,
+            width: 300,
+            height: 100,
+          ),
         ),
       ),
     );
