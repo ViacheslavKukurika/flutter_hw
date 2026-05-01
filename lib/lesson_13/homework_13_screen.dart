@@ -725,7 +725,7 @@ class TrainingExample20 extends StatelessWidget {
 
 /* Є таке правило для LimitedBox: LimitedBox обмежує свого child тільки тоді,
 коли сам отримав необмежені constraints.
- 
+
 У другому Column зелений контейнер не обмежується LimitedBox через те, що 
 перед LimitedBox стоїть SizedBox (height: 100). Він передає LimitedBox уже 
 обмежену висоту 100.  LimitedBox застосовує обмеження maxHeight тільки тоді,
@@ -776,9 +776,20 @@ class TrainingExample21 extends StatelessWidget {
 // Task 22:
 // Чому LimitedBox не впливає на розмір зеленого контейнера?
 
-// Відповідь: ...
+/* Відповідь: Пам'ятаю, як нам на лекції розповідали, що перший віджет у 
+програмі (тобто той, що стоїть після "return") отримує обмеження згідно ро-
+змірам екрана смартфона. Тобто нам знову треба згадати правило:
+
+LimitedBox обмежує child тільки тоді, коли сам отримав необмежені constraints.
+
+У нашому випадку перший віджет, якраз цей самий LimitedBox, отримав обмеження 
+від самої системи (апаратної частини, екрана, як я розумію). Відповідно його
+обмеження не спрацюють, бо сам віджет уже отримав обмеження зверху.
+*/
+
 class TrainingExample22 extends StatelessWidget {
   const TrainingExample22({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const LimitedBox(
