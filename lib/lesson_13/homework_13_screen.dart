@@ -137,7 +137,11 @@ class TrainingExample3 extends StatelessWidget {
       color: Colors.yellow,
       child: Align(
         alignment: Alignment(1, -1),
-        child: Container(color: Colors.green, width: 100, height: 100),
+        child: Container(
+          color: Colors.green,
+          width: 100,
+          height: 100,
+        ),
       ),
     );
   }
@@ -228,7 +232,8 @@ class TrainingExample5 extends StatelessWidget {
     шній відступ, який нам і треба. margin - зовнішній (margin не зробить
      кольорову рамку). Є ще окремий віджет Padding. Мабуть, його можна вико-
      ристати, але зручніше використати не як окремий віджет, а як властивість
-     віджета Container.*/
+     віджета Container.
+     ---------------------------------------------------------------------*/
 }
 
 // Task 6:
@@ -272,7 +277,11 @@ class TrainingExample7 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(color: Colors.orange, height: 100, width: 100),
+        Container(
+          color: Colors.orange,
+          height: 100,
+          width: 100,
+        ),
         Expanded(
           child: ListView.builder(
             padding: EdgeInsets.all(16), // додав для відступу
@@ -289,6 +298,7 @@ class TrainingExample7 extends StatelessWidget {
 // Очікуваний результат: три кольорові блоки в Column,
 // червоний займає 1/4, зелений 2/4, синій 1/4 висоти.
 // Зараз: всі три однакового розміру (flex: 1 за замовчуванням).
+
 class TrainingExample8 extends StatelessWidget {
   const TrainingExample8({super.key});
 
@@ -296,9 +306,24 @@ class TrainingExample8 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(flex: 1, child: Container(color: Colors.red)),
-        Expanded(flex: 2, child: Container(color: Colors.green)),
-        Expanded(flex: 1, child: Container(color: Colors.blue)),
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: Colors.blue,
+          ),
+        ),
       ],
     );
   }
@@ -316,9 +341,14 @@ class TrainingExample9 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(color: Colors.red, height: 100),
+        Container(
+          color: Colors.red,
+          height: 100,
+        ),
         Expanded(
-          child: Container(color: Colors.green),
+          child: Container(
+            color: Colors.green,
+          ),
         ),
       ],
     );
@@ -338,7 +368,11 @@ class TrainingExample10 extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(color: Colors.orange, height: 100, width: 100),
+        Container(
+          color: Colors.orange,
+          height: 100,
+          width: 100,
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: 20,
@@ -369,11 +403,17 @@ class TrainingExample11 extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: Container(color: Colors.green, height: 100),
+            child: Container(
+              color: Colors.green,
+              height: 100,
+            ),
           ),
           Expanded(
             flex: 1,
-            child: Container(color: Colors.blue, height: 100),
+            child: Container(
+              color: Colors.blue,
+              height: 100,
+            ),
           ),
         ],
       ),
@@ -419,7 +459,9 @@ class TrainingExample12 extends StatelessWidget {
               Container(
                 color: Colors.red,
                 width: actualRedWidth,
-                child: Center(child: const Text('Hi')),
+                child: Center(
+                  child: const Text('Hi'),
+                ),
               ),
               if (shouldShowGreen)
                 Expanded(
@@ -535,8 +577,13 @@ class TrainingExample16 extends StatelessWidget {
         width: 100,
         height: 100,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(minWidth: 300, minHeight: 300),
-          child: Container(color: Colors.red),
+          constraints: const BoxConstraints(
+            minWidth: 300,
+            minHeight: 300,
+          ),
+          child: Container(
+            color: Colors.red,
+          ),
         ),
       ),
     );
@@ -556,7 +603,9 @@ class TrainingExample17 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minWidth: 250),
+        constraints: const BoxConstraints(
+          minWidth: 250,
+        ),
         child: SizedBox(
           width: 1000,
           child: ElevatedButton(
