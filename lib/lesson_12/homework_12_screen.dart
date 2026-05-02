@@ -24,18 +24,6 @@ class _Homework12ScreenState extends State<Homework12Screen> {
     return Scaffold(
       backgroundColor: const Color(0xFFEEF2FC),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFFFFF),
-        titleSpacing: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            size: 22,
-            color: Color(0xFF5E5F61),
-          ),
-        ),
         title: const Text(
           'Оцінка візиту до магазину',
           style: TextStyle(
@@ -51,7 +39,14 @@ class _Homework12ScreenState extends State<Homework12Screen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  _buildHeader(),
+                  VisitRatingSection(
+                    rating: _visitRating,
+                    onRatingChanged: (rating) {
+                      setState(() {
+                        _visitRating = rating;
+                      });
+                    },
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(32),
                     child: const Text(
@@ -168,8 +163,20 @@ class _Homework12ScreenState extends State<Homework12Screen> {
   але для зручності перевірки (я так думаю, буде легше) залишу все 
   тут, в одному файлі.
   */
+}
 
-  Widget _buildHeader() {
+class VisitRatingSection extends StatelessWidget {
+  const VisitRatingSection({
+    required this.rating,
+    required this.onRatingChanged,
+    super.key,
+  });
+
+  final int rating;
+  final void Function(int rating) onRatingChanged;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(
@@ -183,12 +190,8 @@ class _Homework12ScreenState extends State<Homework12Screen> {
         ),
       ),
       child: RatingStars(
-        rating: _visitRating,
-        onRatingChanged: (rating) {
-          setState(() {
-            _visitRating = rating;
-          });
-        },
+        rating: rating,
+        onRatingChanged: onRatingChanged,
       ),
     );
   }
@@ -227,13 +230,10 @@ class RatingStars extends StatelessWidget {
             padding: EdgeInsets.only(
               right: index == 4 ? 0 : 8,
             ),
-            child: Transform.scale(
-              scale: isFilled ? 1.25 : 1,
-              child: Image.asset(
-                isFilled ? _starFilledPath : _starEmptyPath,
-                width: 48,
-                height: 48,
-              ),
+            child: Image.asset(
+              isFilled ? _starFilledPath : _starEmptyPath,
+              width: 48,
+              height: 48,
             ),
           ),
         );
