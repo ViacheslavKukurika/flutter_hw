@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hw/lesson_11/homework_11_screen.dart';
 import 'package:flutter_hw/lesson_12/homework_12_screen.dart';
+import 'package:flutter_hw/lesson_13/homework_13_screen.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -39,6 +40,18 @@ class WidgetsScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute<Widget>(
                   builder: (context) => const Homework12Screen(),
+                ),
+              ),
+            ),
+            NavigationCard(
+              title: 'ДЗ №9 (Лекція 13)',
+              description:
+                  'Constraints go down. Sizes go up. Parent '
+                  'sets position.',
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (context) => const WidgetConstrainsTrainingScreen(),
                 ),
               ),
             ),
