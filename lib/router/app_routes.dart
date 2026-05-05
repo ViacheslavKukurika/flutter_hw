@@ -1,10 +1,10 @@
 
 abstract class AppRoutesPaths {
   static const home = '/';
-  static const homeworks = '/homeworks';
-  static const homework7 = '/homeworks/7';
-  static const homework8 = '/homeworks/8';
-  static const homework9 = '/homeworks/9';
+  static const homeworks = 'homeworks';
+  static const homework7 = '7';
+  static const homework8 = '8';
+  static const homework9 = '9';
 }
 
 abstract class AppRoutesNames {

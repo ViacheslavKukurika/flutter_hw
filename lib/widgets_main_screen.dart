@@ -23,21 +23,21 @@ class WidgetsScreen extends StatelessWidget {
               description:
                   'Container + інтерактивний Container. '
                   'StatefulWidget + анімація',
-              onTap: () => context.pushNamed(AppRoutesNames.homework7),
+              onTap: () => context.goNamed(AppRoutesNames.homework7),
             ),
             NavigationCard(
               title: 'ДЗ №8 (Лекція 12)',
               description:
                   'Дизайн сторінки Сільпо. '
                   'StatefulWidget + більш складна анімація',
-              onTap: () => context.pushNamed(AppRoutesNames.homework8),
+              onTap: () => context.goNamed(AppRoutesNames.homework8),
             ),
             NavigationCard(
               title: 'ДЗ №9 (Лекція 13)',
               description:
                   'Закріплення теми компонування віджетів '
                   'О цей капризний контейнер...',
-              onTap: () => context.pushNamed(AppRoutesNames.homework9),
+              onTap: () => context.goNamed(AppRoutesNames.homework9),
             ),
           ],
         ),

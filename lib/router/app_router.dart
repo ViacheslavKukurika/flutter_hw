@@ -13,26 +13,31 @@ final GoRouter router = GoRouter(
       path: AppRoutesPaths.home,
       name: AppRoutesNames.home,
       builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: AppRoutesPaths.homeworks,
-      name: AppRoutesNames.homeworks,
-      builder: (context, state) => const WidgetsScreen(),
-    ),
-    GoRoute(
-      path: AppRoutesPaths.homework7,
-      name: AppRoutesNames.homework7,
-      builder: (context, state) => const Homework11Screen(),
-    ),
-    GoRoute(
-      path: AppRoutesPaths.homework8,
-      name: AppRoutesNames.homework8,
-      builder: (context, state) => const Homework12Screen(),
-    ),
-    GoRoute(
-      path: AppRoutesPaths.homework9,
-      name: AppRoutesNames.homework9,
-      builder: (context, state) => const WidgetConstrainsTrainingScreen(),
+      routes: [
+        GoRoute(
+          path: AppRoutesPaths.homeworks,
+          name: AppRoutesNames.homeworks,
+          builder: (context, state) => const WidgetsScreen(),
+          routes: [
+            GoRoute(
+              path: AppRoutesPaths.homework7,
+              name: AppRoutesNames.homework7,
+              builder: (context, state) => const Homework11Screen(),
+            ),
+            GoRoute(
+              path: AppRoutesPaths.homework8,
+              name: AppRoutesNames.homework8,
+              builder: (context, state) => const Homework12Screen(),
+            ),
+            GoRoute(
+              path: AppRoutesPaths.homework9,
+              name: AppRoutesNames.homework9,
+              builder: (context, state) =>
+                  const WidgetConstrainsTrainingScreen(),
+            ),
+          ],
+        ),
+      ],
     ),
   ],
 );

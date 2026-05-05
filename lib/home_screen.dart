@@ -20,8 +20,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             FeatureCard(
               title: 'Мої домашні завдання :)',
-              // pushNamed, а не goNamed, щоб стрілка навігації в AppBar була
-              onTap: () => context.pushNamed(AppRoutesNames.homeworks),
+              onTap: () => context.goNamed(AppRoutesNames.homeworks),
             ),
           ],
         ),
@@ -43,7 +42,7 @@ class FeatureCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.fromARGB(255, 242, 240, 240),
+      color: const Color.fromARGB(255, 242, 240, 240),
       elevation: 2,
       child: InkWell(
         onTap: onTap,
