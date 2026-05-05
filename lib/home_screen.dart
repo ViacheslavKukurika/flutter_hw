@@ -43,7 +43,7 @@ class FeatureCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(255, 255, 255, 255),
+      color: Color.fromARGB(255, 242, 240, 240),
       elevation: 2,
       child: InkWell(
         onTap: onTap,
