@@ -7,8 +7,8 @@ class Homework11Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade100,
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
         title: const Text(
           'Лекція 11 (ДЗ №7)',
           style: TextStyle(

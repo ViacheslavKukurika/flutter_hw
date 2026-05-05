@@ -24,16 +24,17 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Lab'),
-        backgroundColor: Colors.blue.shade100,
+        title: const Text('Вячеслав Кукуріка'),
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView(        
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             FeatureCard(
-              title: 'Widgets',
+              title: 'Мої домашні завдання :)',
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(

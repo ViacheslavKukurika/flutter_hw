@@ -10,8 +10,9 @@ class WidgetsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Widgets'),
-        backgroundColor: Colors.blue.shade100,
+        title: const Text('Виконані завдання'),
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -21,8 +22,8 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'ДЗ №7 (Лекція 11)',
               description:
-                  'Container, SizedBox, Padding, Align, Center, Text, Row, '
-                  'Column, Expanded, Buttons, Scroll',
+                'Container + інтерактивний Container. '
+                'StatefulWidget + анімація',
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
@@ -33,9 +34,8 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'ДЗ №8 (Лекція 12)',
               description:
-                  'Custom Widgets, Stateless vs Stateful Widgets, '
-                  'Gesture Detector & InkWel, '
-                  'TextFields & TextFormFields',
+                'Дизайн сторінки Сільпо. '
+                'StatefulWidget + більш складна анімація',
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
@@ -46,8 +46,8 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'ДЗ №9 (Лекція 13)',
               description:
-                  'Constraints go down. Sizes go up. Parent '
-                  'sets position.',
+                'Закріплення теми компонування віджетів '
+                'О цей капризний контейнер...',
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute<Widget>(
@@ -89,8 +89,8 @@ class NavigationCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.blue.shade50,
-                Colors.blue.shade100,
+                const Color.fromARGB(255, 219, 210, 210),
+                const Color.fromARGB(255, 255, 255, 255),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -122,7 +122,7 @@ class NavigationCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.arrow_forward,
-                    color: Colors.blue.shade700,
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
                 ],
               ),
