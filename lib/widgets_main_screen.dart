@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hw/lesson_11/homework_11_screen.dart';
-import 'package:flutter_hw/lesson_12/homework_12_screen.dart';
-import 'package:flutter_hw/lesson_13/homework_13_screen.dart';
+import 'package:flutter_hw/router/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -22,38 +21,23 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'ДЗ №7 (Лекція 11)',
               description:
-                'Container + інтерактивний Container. '
-                'StatefulWidget + анімація',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework11Screen(),
-                ),
-              ),
+                  'Container + інтерактивний Container. '
+                  'StatefulWidget + анімація',
+              onTap: () => context.pushNamed(AppRoutesNames.homework7),
             ),
             NavigationCard(
               title: 'ДЗ №8 (Лекція 12)',
               description:
-                'Дизайн сторінки Сільпо. '
-                'StatefulWidget + більш складна анімація',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework12Screen(),
-                ),
-              ),
+                  'Дизайн сторінки Сільпо. '
+                  'StatefulWidget + більш складна анімація',
+              onTap: () => context.pushNamed(AppRoutesNames.homework8),
             ),
             NavigationCard(
               title: 'ДЗ №9 (Лекція 13)',
               description:
-                'Закріплення теми компонування віджетів '
-                'О цей капризний контейнер...',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetConstrainsTrainingScreen(),
-                ),
-              ),
+                  'Закріплення теми компонування віджетів '
+                  'О цей капризний контейнер...',
+              onTap: () => context.pushNamed(AppRoutesNames.homework9),
             ),
           ],
         ),
@@ -89,8 +73,8 @@ class NavigationCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color.fromARGB(255, 219, 210, 210),
-                const Color.fromARGB(255, 255, 255, 255),
+                const Color.fromARGB(255, 242, 240, 240),
+                Colors.white,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -122,7 +106,7 @@ class NavigationCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.arrow_forward,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: Colors.black,
                   ),
                 ],
               ),

@@ -1,7 +1,16 @@
 
 abstract class AppRoutesPaths {
   static const home = '/';
-  static const hw_7 = '';
-  static const hw_8 = '';
-  static const hw_9 = '';
+  static const homeworks = '/homeworks';
+  static const homework7 = '/homeworks/7';
+  static const homework8 = '/homeworks/8';
+  static const homework9 = '/homeworks/9';
+}
+
+abstract class AppRoutesNames {
+  static const home = 'home';
+  static const homeworks = 'homeworks';
+  static const homework7 = 'homeworks7';
+  static const homework8 = 'homeworks8';
+  static const homework9 = 'homeworks9';
 }
