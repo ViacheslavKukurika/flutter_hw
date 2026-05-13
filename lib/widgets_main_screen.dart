@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hw/lesson_11/homework_11_screen.dart';
-import 'package:flutter_hw/lesson_12/homework_12_screen.dart';
-import 'package:flutter_hw/lesson_13/homework_13_screen.dart';
+import 'package:flutter_hw/router/app_routes.dart';
+import 'package:go_router/go_router.dart';
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
@@ -10,8 +9,9 @@ class WidgetsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Widgets'),
-        backgroundColor: Colors.blue.shade100,
+        title: const Text('Виконані завдання'),
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -21,39 +21,23 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'ДЗ №7 (Лекція 11)',
               description:
-                  'Container, SizedBox, Padding, Align, Center, Text, Row, '
-                  'Column, Expanded, Buttons, Scroll',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework11Screen(),
-                ),
-              ),
+                  'Container + інтерактивний Container. '
+                  'StatefulWidget + анімація',
+              onTap: () => context.goNamed(AppRoutesNames.homework7),
             ),
             NavigationCard(
               title: 'ДЗ №8 (Лекція 12)',
               description:
-                  'Custom Widgets, Stateless vs Stateful Widgets, '
-                  'Gesture Detector & InkWel, '
-                  'TextFields & TextFormFields',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const Homework12Screen(),
-                ),
-              ),
+                  'Дизайн сторінки Сільпо. '
+                  'StatefulWidget + більш складна анімація',
+              onTap: () => context.goNamed(AppRoutesNames.homework8),
             ),
             NavigationCard(
               title: 'ДЗ №9 (Лекція 13)',
               description:
-                  'Constraints go down. Sizes go up. Parent '
-                  'sets position.',
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (context) => const WidgetConstrainsTrainingScreen(),
-                ),
-              ),
+                  'Закріплення теми компонування віджетів '
+                  'О цей капризний контейнер...',
+              onTap: () => context.goNamed(AppRoutesNames.homework9),
             ),
           ],
         ),
@@ -89,8 +73,8 @@ class NavigationCard extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.blue.shade50,
-                Colors.blue.shade100,
+                const Color.fromARGB(255, 242, 240, 240),
+                Colors.white,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -122,7 +106,7 @@ class NavigationCard extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.arrow_forward,
-                    color: Colors.blue.shade700,
+                    color: Colors.black,
                   ),
                 ],
               ),
