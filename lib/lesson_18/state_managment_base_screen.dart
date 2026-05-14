@@ -11,18 +11,36 @@ class StateManagmentBaseScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        title: Text('BLoC/Cubit:'),
+        title: Text('BLoC/Cubit'),
       ),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 200),
+            SizedBox(height: 300),
             ElevatedButton(
               onPressed: () {
                 context.goNamed(AppRoutesNames.homework11Cubit);
               },
-              child: 
-              Text('Cubit Example'),
+              child: Text(
+                'Cubit Example',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.goNamed(AppRoutesNames.homework11Bloc);
+              },
+              child: Text(
+                'Bloc Example',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
             ),
           ],
         ),

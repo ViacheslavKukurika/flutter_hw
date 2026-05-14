@@ -19,5 +19,5 @@ abstract class AppRoutesNames {
   static const homework9 = 'homeworks9';
   static const homework11 = 'homework11';
   static const homework11Cubit = 'homework11c';
-  static const homework11Bloc = 'homewirk11b';
+  static const homework11Bloc = 'homework11b';
 }
