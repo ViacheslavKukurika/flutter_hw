@@ -35,7 +35,7 @@ class StateManagmentBaseScreen extends StatelessWidget {
                 context.goNamed(AppRoutesNames.homework11Bloc);
               },
               child: Text(
-                'Bloc Example',
+                'BLoC Example',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,

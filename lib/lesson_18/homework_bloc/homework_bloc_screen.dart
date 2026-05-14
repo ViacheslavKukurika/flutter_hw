@@ -19,7 +19,7 @@ class HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        title: Text('Лічильник (Bloc)'),
+        title: Text('Лічильник (BLoC)'),
       ),
       body: Center(
         child: Column(
