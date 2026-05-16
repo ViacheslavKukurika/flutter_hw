@@ -4,16 +4,10 @@ import 'package:flutter_hw/lesson_18/homework_bloc/counter_bloc.dart';
 import 'package:flutter_hw/router/app_routes.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeworkBlocScreen extends StatefulWidget {
+class HomeworkBlocScreen extends StatelessWidget {
   const HomeworkBlocScreen({super.key});
 
   @override
-  State<HomeworkBlocScreen> createState() => HomeworkBlocScreenState();
-}
-
-class HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
-
-  @override 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +37,7 @@ class HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
                   ),
                   onPressed: () {
                     context.read<CounterBloc>().add(IncrementEvent());
-                    },
+                  },
                   child: Text('+', style: TextStyle(fontSize: 30)),
                 ),
                 SizedBox(width: 12),
@@ -68,9 +62,7 @@ class HomeworkBlocScreenState extends State<HomeworkBlocScreen> {
             SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  context.pushNamed(AppRoutesNames.homework11Bloc);
-                });
+                context.pushNamed(AppRoutesNames.homework11Bloc);
               },
               child: Text('На новий екран'),
             ),

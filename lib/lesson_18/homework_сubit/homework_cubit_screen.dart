@@ -4,14 +4,9 @@ import 'package:flutter_hw/lesson_18/homework_%D1%81ubit/counter_cubit.dart';
 import 'package:flutter_hw/router/app_routes.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeworkCubitScreen extends StatefulWidget {
+class HomeworkCubitScreen extends StatelessWidget {
   const HomeworkCubitScreen({super.key});
 
-  @override
-  State<HomeworkCubitScreen> createState() => HomeworkCubitScreenState();
-}
-
-class HomeworkCubitScreenState extends State<HomeworkCubitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,9 +56,7 @@ class HomeworkCubitScreenState extends State<HomeworkCubitScreen> {
             SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  context.pushNamed(AppRoutesNames.homework11Cubit);
-                });
+                context.pushNamed(AppRoutesNames.homework11Cubit);
               },
               child: Text('На новий екран'),
             ),

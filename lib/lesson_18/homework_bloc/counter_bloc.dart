@@ -7,7 +7,7 @@ class CounterBloc extends Bloc<CounterEvent, int> {
     on<ResetEvent>(_reset);
   }
 
-  void _increment(IncrementEvent event, Emitter<int> emit) {
+  void _increment(_, Emitter<int> emit) {
     emit(state + 1);
   }
 
@@ -20,7 +20,7 @@ class CounterBloc extends Bloc<CounterEvent, int> {
   }
 }
 
-class CounterEvent {}
+abstract class CounterEvent {}
 
 class IncrementEvent extends CounterEvent {}
 
