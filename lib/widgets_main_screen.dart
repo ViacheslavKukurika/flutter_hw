@@ -41,10 +41,15 @@ class WidgetsScreen extends StatelessWidget {
             ),
             NavigationCard(
               title: 'ДЗ №11 (Лекція 18)',
-              description:
-                  'BLoC/Cubit: перша практика',
+              description: 'BLoC/Cubit: перша практика',
               onTap: () => context.goNamed(AppRoutesNames.homework11),
-            )
+            ),
+            NavigationCard(
+              title: 'ДЗ №12 (Лекція 19)',
+              description:
+                  'Cubit: Rate screen',
+              onTap: () => context.goNamed(AppRoutesNames.homework12),
+            ),
           ],
         ),
       ),
