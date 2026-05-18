@@ -10,6 +10,35 @@ class RateAppScreen extends StatefulWidget {
 
 class _RateAppScreenState extends State<RateAppScreen> {
   int _visitRating = 0;
+  bool _isLoading = false;  
+
+  void _resetRating() {
+    setState(() {
+      _visitRating = 0;
+    });
+  }
+
+  Future<void> _submitRating() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    await Future<void>.delayed(const Duration(seconds: 1));
+
+    if (!mounted) return;
+
+    // Якщо State уже не на екрані, то припиняється метод
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 3),
+        backgroundColor: Color(0xFF656565),
+        content: RatingSuccessSnackBarContent()
+      ),
+    );
+
+    context.pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +70,9 @@ class _RateAppScreenState extends State<RateAppScreen> {
               _visitRating = rating;
             });
           },
+          onResetRating: _resetRating,
+          onSubmitRating: _submitRating,
+          isLoading: _isLoading,
         ),
       ),
     );
@@ -50,12 +82,18 @@ class _RateAppScreenState extends State<RateAppScreen> {
 class RatingWidget extends StatelessWidget {
   const RatingWidget({
     required this.rating,
+    required this.isLoading,
     required this.onRatingChanged,
+    required this.onResetRating,
+    required this.onSubmitRating,
     super.key,
   });
 
   final int rating;
   final void Function(int rating) onRatingChanged;
+  final bool isLoading;
+  final VoidCallback onResetRating;
+  final Future<void> Function() onSubmitRating;
 
   static const String _circularArrowPath =
       'assets/icons/lesson_19/circular_arrow.png';
@@ -92,7 +130,7 @@ class RatingWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: isLoading ? null : onSubmitRating,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF1B3D70),
                     foregroundColor: Colors.white,
@@ -106,19 +144,28 @@ class RatingWidget extends StatelessWidget {
                       vertical: 13,
                     ),
                   ),
-                  child: Text(
-                    'Submit rating',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: isLoading
+                      ? SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                      : Text(
+                          'Submit rating',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                 ),
               ),
               SizedBox(width: 10),
               Expanded(
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: isLoading ? null : onResetRating,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF41A6F4),
                     foregroundColor: Colors.white,
@@ -134,9 +181,9 @@ class RatingWidget extends StatelessWidget {
                   ),
                   icon: Image.asset(
                     _circularArrowPath,
-                     width: 16,
-                     height: 16,
-                    ),
+                    width: 16,
+                    height: 16,
+                  ),
                   label: Text(
                     'Reset rating',
                     style: TextStyle(
@@ -194,7 +241,7 @@ class RatingStarsWidget extends StatelessWidget {
   }
 }
 
-/* ---------------------- class RatingStars ----------------------
+/* ---------------------- class RatingStarsWidget ----------------------
 
   class RatingStarsWidget - це клас (віджет), який відповідає за фіксування
 натиснення (GestureDetector)та відмальовування зірочок. 
@@ -215,3 +262,54 @@ right: index == 4 ? 0 : 20 - створення відступу лише між
 вказуємо, що не треба робити відступу від крайньої 5-ї зірки до правого краю
 
 ---------------------------------------------------------------------*/
+
+class RatingSuccessSnackBarContent extends StatelessWidget {
+  const RatingSuccessSnackBarContent({super.key});
+
+  static const String _starPath = 'assets/icons/lesson_19/star.png';
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFF41A6F4),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  _starPath,
+                  width: 21,
+                  height: 20,
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    'Rating submitted successfully',
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Image.asset(
+                  _starPath,
+                  width: 21,
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+        );
+  }
+}
