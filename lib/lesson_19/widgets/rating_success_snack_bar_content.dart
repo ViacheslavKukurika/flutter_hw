@@ -50,3 +50,5 @@ class RatingSuccessSnackBarContent extends StatelessWidget {
     );
   }
 }
+
+// Віджет SnackBar, який сповіщає про усіпішну псевдовідправку на бек, мабуть)

@@ -122,3 +122,5 @@ class RatingWidget extends StatelessWidget {
     );
   }
 }
+
+// Основний UI-віджет, у який вкладений інший віджет - RatingStarsWidget

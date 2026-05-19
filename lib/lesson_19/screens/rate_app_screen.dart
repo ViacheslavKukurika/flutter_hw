@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hw/lesson_19/bloc/rate_app_cubit.dart';
+import 'package:flutter_hw/lesson_19/widgets/rating_error_snack_bar_content.dart';
 import 'package:flutter_hw/lesson_19/widgets/rating_success_snack_bar_content.dart';
 import 'package:flutter_hw/lesson_19/widgets/rating_widget.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +34,27 @@ class RateAppScreen extends StatelessWidget {
         listenWhen: (previous, current) {
           return previous.status != current.status;
         },
+
         listener: (context, state) {
+          final messenger = ScaffoldMessenger.of(context);
+
+          if (state.status == RateAppStatus.error) {
+            messenger
+              ..hideCurrentSnackBar()
+              //прибирає попередній SnackBar, якщо він ще показується
+              ..showSnackBar(
+                const SnackBar(
+                  duration: Duration(seconds: 3),
+                  backgroundColor: Color.fromARGB(255, 190, 190, 190),
+                  content: RatingErrorSnackBarContent(),
+                ),
+              );
+
+            context.read<RateAppCubit>().clearStatus();
+
+            return;
+          }
+
           if (state.status == RateAppStatus.success) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -45,6 +66,7 @@ class RateAppScreen extends StatelessWidget {
             context.pop();
           }
         },
+
         builder: (context, state) {
           return Align(
             alignment: Alignment.topCenter,

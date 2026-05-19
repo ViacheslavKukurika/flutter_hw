@@ -47,7 +47,7 @@ class WidgetsScreen extends StatelessWidget {
             NavigationCard(
               title: 'ДЗ №12 (Лекція 19)',
               description:
-                  'Cubit: Rate screen',
+                  'Cubit: верстка дизайну + відділення бізнес-логіки від UI',
               onTap: () => context.goNamed(AppRoutesNames.homework12),
             ),
           ],
