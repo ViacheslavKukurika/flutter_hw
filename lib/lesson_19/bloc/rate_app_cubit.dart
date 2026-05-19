@@ -11,7 +11,12 @@ class RateAppCubit extends Cubit<RateAppState> {
   RateAppCubit() : super(const RateAppState());
 
   void selectRating(int rating) {
-    emit(state.copyWith(rating: rating));
+    emit(
+      state.copyWith(
+        rating: rating,
+        status: RateAppStatus.initial,
+      ),
+    );
   }
 
   void resetRating() {
@@ -19,6 +24,10 @@ class RateAppCubit extends Cubit<RateAppState> {
   }
 
   Future<void> submitRating() async {
+    if (state.rating == 0) {
+      emit(state.copyWith(status: RateAppStatus.error));
+      return;
+    }
     emit(state.copyWith(status: RateAppStatus.loading));
     await Future<void>.delayed(const Duration(seconds: 1));
     emit(state.copyWith(status: RateAppStatus.success));
