@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hw/home_screen.dart';
 import 'package:flutter_hw/lesson_11/homework_11_screen.dart';
 import 'package:flutter_hw/lesson_12/homework_12_screen.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_hw/lesson_13/homework_13_screen.dart';
 import 'package:flutter_hw/lesson_18/homework_bloc/homework_bloc_screen.dart';
 import 'package:flutter_hw/lesson_18/homework_cubit/homework_cubit_screen.dart';
 import 'package:flutter_hw/lesson_18/state_managment_base_screen.dart';
+import 'package:flutter_hw/lesson_19/bloc/rate_app_cubit.dart';
 import 'package:flutter_hw/lesson_19/screens/rate_app_screen.dart';
 import 'package:flutter_hw/router/app_routes.dart';
 import 'package:flutter_hw/widgets_main_screen.dart';
@@ -59,7 +61,10 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: AppRoutesPaths.homework12,
               name: AppRoutesNames.homework12,
-              builder: (context, state) => const RateAppScreen(),
+              builder: (context, state) => BlocProvider(
+                create: (context) => RateAppCubit(),
+                child: const RateAppScreen(),
+              ),
             ),
           ],
         ),
