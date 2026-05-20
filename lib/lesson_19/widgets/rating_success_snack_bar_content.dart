@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Віджет SnackBar, який сповіщає про усіпішну псевдовідправку на бек, мабуть)
+
 class RatingSuccessSnackBarContent extends StatelessWidget {
   const RatingSuccessSnackBarContent({super.key});
 
@@ -50,5 +52,3 @@ class RatingSuccessSnackBarContent extends StatelessWidget {
     );
   }
 }
-
-// Віджет SnackBar, який сповіщає про усіпішну псевдовідправку на бек, мабуть)

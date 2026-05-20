@@ -45,7 +45,9 @@ class RateAppScreen extends StatelessWidget {
               ..showSnackBar(
                 const SnackBar(
                   duration: Duration(seconds: 3),
-                  backgroundColor: Color.fromARGB(255, 190, 190, 190),
+                  behavior: SnackBarBehavior.fixed,
+                  backgroundColor: Colors.transparent, elevation: 0,
+                  padding: EdgeInsets.zero,
                   content: RatingErrorSnackBarContent(),
                 ),
               );
@@ -59,7 +61,7 @@ class RateAppScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 duration: Duration(seconds: 3),
-                backgroundColor: Color(0xFF656565),
+                backgroundColor: Colors.transparent, elevation: 0,
                 content: RatingSuccessSnackBarContent(),
               ),
             );

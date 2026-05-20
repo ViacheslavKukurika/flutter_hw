@@ -1,29 +1,39 @@
 import 'package:flutter/material.dart';
 
+/* Віджет SnackBar, який спочатку задумувався для сповіщення
+про помилку */
+
 class RatingErrorSnackBarContent extends StatelessWidget {
   const RatingErrorSnackBarContent({super.key});
 
-  static const String _sadDogPath = 'assets/icons/lesson_19/sadDog.png';
+  static const String _sadDogPath = 'assets/icons/lesson_19/sadDog.webp';
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
-    final dogSize = screenWidth * 0.33;
+    final screenSize = MediaQuery.sizeOf(context);
+    final snackBarHeight = screenSize.height * 0.25;
+    final dogSize = screenSize.width * 0.25;
 
-    return Center(
+    return SizedBox(
+      width: double.infinity,
+      height: snackBarHeight,
       child: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 190, 190, 190),
-          borderRadius: BorderRadius.circular(10),
+        decoration: const BoxDecoration(
+          color:  Color(0xFFA5E0FF),
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(24),
+          ),
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
-          vertical: 16,
+          vertical: 20,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Ну і от, 0 з 5...',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 25,
                 color: Colors.black,
@@ -43,6 +53,3 @@ class RatingErrorSnackBarContent extends StatelessWidget {
     );
   }
 }
-
-/* Віджет SnackBar, який спочатку задумувався для сповіщення
-про помилку */
