@@ -30,14 +30,92 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
 
     _rotationAnimation = Tween<double>(
       begin: 0,
-      end: 2,
+      end: 4,
     ).animate(_controller);
 
-    _alignmentAnimation = AlignmentTween(
-      begin: Alignment.bottomCenter,
-      end: Alignment.bottomCenter,
-    ).animate(_controller);
-    
+    _alignmentAnimation = TweenSequence<Alignment>([
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: Alignment.bottomCenter,
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween:
+            AlignmentTween(
+              begin: Alignment.bottomCenter,
+              end: const Alignment(0, -0.95),
+            ).chain(
+              CurveTween(curve: Curves.easeOut),
+            ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment(0, -0.95),
+          end: Alignment.bottomCenter,
+        ).chain(
+          CurveTween(curve: Curves.easeIn)),
+        weight: 0.8,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: const Alignment(0, 0.6),
+        ).chain(
+          CurveTween(curve: Curves.easeOut)),
+        weight: 0.5,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: const Alignment(0, 0.6),
+          end: Alignment.bottomCenter,
+        ).chain(
+          CurveTween(curve: Curves.easeIn)),
+        weight: 0.4,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: Alignment(0, 0.9),
+        ).chain(
+          CurveTween(curve: Curves.easeOut)),
+        weight: 0.25,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: const Alignment(0, 0.9),
+          end: Alignment.bottomCenter,
+        ).chain(
+          CurveTween(curve: Curves.easeIn)),
+        weight: 0.20,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: Alignment(0, 0.95),
+        ).chain(CurveTween(curve: Curves.easeOut)),
+        weight: 0.15,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment(0, 0.95),
+          end: Alignment.bottomCenter,
+        ).chain(CurveTween(curve: Curves.easeIn)),
+        weight: 0.09,
+      ),
+      TweenSequenceItem(
+        tween: AlignmentTween(
+          begin: Alignment.bottomCenter,
+          end: Alignment.bottomCenter,
+        ).chain(
+          CurveTween(curve: Curves.easeOut)),
+        weight: 1,
+      ),
+    ]).animate(_controller);
+
+    _controller.repeat();
   }
 
   @override
@@ -57,21 +135,26 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
       ),
       body: Column(
         children: [
-          Expanded(            
+          Expanded(
             flex: 6,
             child: Container(
               width: double.infinity,
               color: const Color.fromARGB(255, 129, 214, 238),
-              child: Align(
-                alignment: _alignmentAnimation.value,
-                child: Transform.rotate(
-                  angle: _rotationAnimation.value * math.pi,
-                  child: SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Image.asset(_ballPath,
-                    fit: BoxFit.contain),
-                  ),
+              child: AnimatedBuilder(
+                animation: _controller,
+                builder: (context, child) {
+                  return Align(
+                    alignment: _alignmentAnimation.value,
+                    child: Transform.rotate(
+                      angle: _rotationAnimation.value * math.pi,
+                      child: child,
+                    ),
+                  );
+                },
+                child: SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Image.asset(_ballPath, fit: BoxFit.contain),
                 ),
               ),
             ),
