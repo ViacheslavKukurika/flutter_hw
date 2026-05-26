@@ -24,14 +24,100 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
 
   void initAnimation() {
     _controller = AnimationController(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 5),
       vsync: this,
     );
 
-    _rotationAnimation = Tween<double>(
-      begin: 0,
-      end: 4,
-    ).animate(_controller);
+    _rotationAnimation = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: ConstantTween<double>(0),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 0,
+              end: 3,
+            ).chain(
+              CurveTween(curve: Curves.easeOut),
+            ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 3,
+              end: 3.75,
+            ).chain(
+              CurveTween(curve: Curves.easeIn),
+            ),
+        weight: 0.8,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 3.75,
+              end: 3.95,
+            ).chain(
+              CurveTween(curve: Curves.easeOut),
+            ),
+        weight: 0.5,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 3.95,
+              end: 4,
+            ).chain(
+              CurveTween(curve: Curves.easeIn),
+            ),
+        weight: 0.4,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 4,
+              end: 4,
+            ).chain(
+              CurveTween(curve: Curves.easeOut),
+            ),
+        weight: 0.25,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 4,
+              end: 4,
+            ).chain(
+              CurveTween(curve: Curves.easeIn),
+            ),
+        weight: 0.20,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 4,
+              end: 4,
+            ).chain(
+              CurveTween(curve: Curves.easeOut),
+            ),
+        weight: 0.15,
+      ),
+      TweenSequenceItem(
+        tween:
+            Tween<double>(
+              begin: 4,
+              end: 4,
+            ).chain(
+              CurveTween(curve: Curves.easeIn),
+            ),
+        weight: 0.09,
+      ),
+      TweenSequenceItem(
+        tween: ConstantTween<double>(4),
+        weight: 1,
+      ),
+    ]).animate(_controller);
 
     _alignmentAnimation = TweenSequence<Alignment>([
       TweenSequenceItem(
@@ -55,40 +141,35 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
         tween: AlignmentTween(
           begin: Alignment(0, -0.95),
           end: Alignment.bottomCenter,
-        ).chain(
-          CurveTween(curve: Curves.easeIn)),
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 0.8,
       ),
       TweenSequenceItem(
         tween: AlignmentTween(
           begin: Alignment.bottomCenter,
           end: const Alignment(0, 0.6),
-        ).chain(
-          CurveTween(curve: Curves.easeOut)),
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 0.5,
       ),
       TweenSequenceItem(
         tween: AlignmentTween(
           begin: const Alignment(0, 0.6),
           end: Alignment.bottomCenter,
-        ).chain(
-          CurveTween(curve: Curves.easeIn)),
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 0.4,
       ),
       TweenSequenceItem(
         tween: AlignmentTween(
           begin: Alignment.bottomCenter,
           end: Alignment(0, 0.9),
-        ).chain(
-          CurveTween(curve: Curves.easeOut)),
+        ).chain(CurveTween(curve: Curves.easeOut)),
         weight: 0.25,
       ),
       TweenSequenceItem(
         tween: AlignmentTween(
           begin: const Alignment(0, 0.9),
           end: Alignment.bottomCenter,
-        ).chain(
-          CurveTween(curve: Curves.easeIn)),
+        ).chain(CurveTween(curve: Curves.easeIn)),
         weight: 0.20,
       ),
       TweenSequenceItem(
