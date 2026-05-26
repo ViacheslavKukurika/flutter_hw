@@ -109,8 +109,7 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
         tween: AlignmentTween(
           begin: Alignment.bottomCenter,
           end: Alignment.bottomCenter,
-        ).chain(
-          CurveTween(curve: Curves.easeOut)),
+        ),
         weight: 1,
       ),
     ]).animate(_controller);
