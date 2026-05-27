@@ -14,7 +14,9 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
   late final Animation<double> _rotationAnimation;
   late final Animation<Alignment> _alignmentAnimation;
 
-  static const String _ballPath = 'assets/icons/lesson_21/ball.png';
+  static const String _ballPath = 'assets/images/lesson_21/ball.png';
+  static const String _skyPath = 'assets/images/lesson_21/sky.png';
+  static const String _grassPath = 'assets/images/lesson_21/grass.png';
 
   @override
   void initState() {
@@ -81,10 +83,7 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
 
     _alignmentAnimation = TweenSequence<Alignment>([
       TweenSequenceItem(
-        tween: AlignmentTween(
-          begin: Alignment.bottomCenter,
-          end: Alignment.bottomCenter,
-        ),
+        tween: ConstantTween<Alignment>(Alignment.bottomCenter),
         weight: 1,
       ),
       TweenSequenceItem(
@@ -147,10 +146,7 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
         weight: 0.09,
       ),
       TweenSequenceItem(
-        tween: AlignmentTween(
-          begin: Alignment.bottomCenter,
-          end: Alignment.bottomCenter,
-        ),
+        tween: ConstantTween<Alignment>(Alignment.bottomCenter),
         weight: 1,
       ),
     ]).animate(_controller);
@@ -170,7 +166,7 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        title: Text('Animated Ball'),
+        title: const Text('Animated Ball'),
         centerTitle: true,
       ),
       body: Column(
@@ -179,7 +175,12 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
             flex: 6,
             child: Container(
               width: double.infinity,
-              color: const Color.fromARGB(255, 129, 214, 238),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(_skyPath),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: AnimatedBuilder(
                 animation: _controller,
                 builder: (context, child) {
@@ -202,7 +203,13 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
           Expanded(
             flex: 1,
             child: Container(
-              color: Colors.lightGreen,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(_grassPath),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
+              ),
             ),
           ),
         ],
