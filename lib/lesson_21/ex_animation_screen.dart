@@ -74,48 +74,8 @@ class _ExAnimationScreenState extends State<ExAnimationScreen>
         weight: 0.4,
       ),
       TweenSequenceItem(
-        tween:
-            Tween<double>(
-              begin: 4,
-              end: 4,
-            ).chain(
-              CurveTween(curve: Curves.easeOut),
-            ),
-        weight: 0.25,
-      ),
-      TweenSequenceItem(
-        tween:
-            Tween<double>(
-              begin: 4,
-              end: 4,
-            ).chain(
-              CurveTween(curve: Curves.easeIn),
-            ),
-        weight: 0.20,
-      ),
-      TweenSequenceItem(
-        tween:
-            Tween<double>(
-              begin: 4,
-              end: 4,
-            ).chain(
-              CurveTween(curve: Curves.easeOut),
-            ),
-        weight: 0.15,
-      ),
-      TweenSequenceItem(
-        tween:
-            Tween<double>(
-              begin: 4,
-              end: 4,
-            ).chain(
-              CurveTween(curve: Curves.easeIn),
-            ),
-        weight: 0.09,
-      ),
-      TweenSequenceItem(
         tween: ConstantTween<double>(4),
-        weight: 1,
+        weight: 1.69,
       ),
     ]).animate(_controller);
 
