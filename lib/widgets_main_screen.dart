@@ -50,6 +50,13 @@ class WidgetsScreen extends StatelessWidget {
                   'Cubit: верстка дизайну + відділення бізнес-логіки від UI',
               onTap: () => context.goNamed(AppRoutesNames.homework12),
             ),
+            NavigationCard(
+              title: 'ДЗ №13 (Лекція 21)',
+              description:
+                  'Створення Explicit Animations: '
+                  'Animated Ball на зеленій травичці',
+              onTap: () => context.goNamed(AppRoutesNames.homework13),
+            )
           ],
         ),
       ),
