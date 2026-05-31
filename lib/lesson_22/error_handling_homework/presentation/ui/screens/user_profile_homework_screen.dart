@@ -16,7 +16,10 @@ class _UserProfileHomeworkScreenState extends State<UserProfileHomeworkScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('User Profile Homework')),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        title: const Text('User Profile Homework')),
       body: BlocBuilder<UserProfileCubit, UserProfileState>(
         builder: (context, state) {
           return switch (state) {
@@ -71,7 +74,7 @@ class _LoadedProfileWidget extends StatelessWidget {
               children: [
                 const CircleAvatar(
                   radius: 50,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.black,
                   child: Icon(
                     Icons.person,
                     size: 50,
@@ -90,7 +93,7 @@ class _LoadedProfileWidget extends StatelessWidget {
                 Text('ID: ${user.id}'),
                 const SizedBox(height: 16),
                 const Text(
-                  'Профіль успішно завантажено!',
+                  'Профіль успішно завантажено',
                   style: TextStyle(
                     color: Colors.green,
                     fontWeight: FontWeight.w600,
