@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hw/home_screen.dart';
 import 'package:flutter_hw/lesson_11/homework_11_screen.dart';
 import 'package:flutter_hw/lesson_12/homework_12_screen.dart';
@@ -7,6 +8,9 @@ import 'package:flutter_hw/lesson_18/homework_cubit/homework_cubit_screen.dart';
 import 'package:flutter_hw/lesson_18/state_managment_base_screen.dart';
 import 'package:flutter_hw/lesson_19/screens/rate_app_screen.dart';
 import 'package:flutter_hw/lesson_21/ex_animation_screen.dart';
+import 'package:flutter_hw/lesson_22/error_handling_homework/data/repository/fake_user_repository.dart';
+import 'package:flutter_hw/lesson_22/error_handling_homework/presentation/cubit/user_profile_cubit.dart';
+import 'package:flutter_hw/lesson_22/error_handling_homework/presentation/ui/screens/user_profile_homework_screen.dart';
 import 'package:flutter_hw/router/app_routes.dart';
 import 'package:flutter_hw/widgets_main_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -66,6 +70,18 @@ final GoRouter router = GoRouter(
               path: AppRoutesPaths.homework13,
               name: AppRoutesNames.homework13,
               builder: (context, state) => const ExAnimationScreen(),
+            ),
+            GoRoute(
+              path: AppRoutesPaths.homework14,
+              name: AppRoutesNames.homework14,
+              builder: (context, state) {
+                return BlocProvider(
+                  create: (context) => UserProfileCubit(
+                    FakeUserRepository(),
+                  )..loadUserProfile(),
+                  child: const UserProfileHomeworkScreen(),
+                );
+              },
             ),
           ],
         ),

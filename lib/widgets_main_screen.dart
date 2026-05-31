@@ -56,7 +56,14 @@ class WidgetsScreen extends StatelessWidget {
                   'Створення Explicit Animations: '
                   'Animated Ball на зеленій травичці',
               onTap: () => context.goNamed(AppRoutesNames.homework13),
-            )
+            ),
+            NavigationCard(
+              title: 'ДЗ №14 (Лекція 22)',
+              description:
+                  'Обробка помилок та логування: '
+                  'Створення свого кастомного Exception',
+              onTap: () => context.goNamed(AppRoutesNames.homework14),
+            ),
           ],
         ),
       ),

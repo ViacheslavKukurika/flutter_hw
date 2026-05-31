@@ -10,6 +10,7 @@ abstract class AppRoutesPaths {
   static const homework11Bloc = '11b';
   static const homework12 = '12';
   static const homework13 = '13';
+  static const homework14 = '14';
 
 }
 
@@ -24,4 +25,5 @@ abstract class AppRoutesNames {
   static const homework11Bloc = 'homework11b';
   static const homework12 = 'homework12';
   static const homework13 = 'homework13';
+  static const homework14 = 'homework14';
 }
